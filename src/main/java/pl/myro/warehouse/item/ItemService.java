@@ -21,11 +21,12 @@ public class ItemService {
     }
 
     public void updateItem(Item item, long id) {
+        if (item.getId() == 0) item.setId(id);
         itemRepository.save(item);
     }
 
     public Item getItem(long id) {
-        return itemRepository.findById(id).get();
+        return itemRepository.findById(id).orElse(null);
     }
 
     public void deleteItem(long id) {

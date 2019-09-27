@@ -1,10 +1,7 @@
 package pl.myro.warehouse.item;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,12 +26,12 @@ public class ItemController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/items")
-    public void addItem(Item item) {
+    public void addItem(@RequestBody Item item) {
         itemService.addItem(item);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/items/{id}")
-    public void updateItem(Item item, @PathVariable long id) {
+    public void updateItem(@RequestBody Item item, @PathVariable long id) {
         itemService.updateItem(item, id);
     }
 
